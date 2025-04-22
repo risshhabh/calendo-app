@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+/* Thin weight */
+@font-face {
+    font-family: 'Styrene';
+    src: url('./assets/fonts/Styrene-Font/StyreneA-Thin.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Styrene';
+    src: url('./assets/fonts/Styrene-Font/StyreneA-ThinItalic.otf') format('opentype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+/* Light weight */
+@font-face {
+    font-family: 'Styrene';
+    src: url('./assets/fonts/Styrene-Font/StyreneA-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Styrene';
+    src: url('./assets/fonts/Styrene-Font/StyreneA-LightItalic.otf') format('opentype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* Regular weight */
+@font-face {
+    font-family: 'Styrene';
+    src: url('./assets/fonts/Styrene-Font/StyreneA-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Styrene';
+    src: url('./assets/fonts/Styrene-Font/StyreneA-RegularItalic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* Medium weight */
+@font-face {
+    font-family: 'Styrene';
+    src: url('./assets/fonts/Styrene-Font/StyreneA-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Styrene';
+    src: url('./assets/fonts/Styrene-Font/StyreneA-MediumItalic.otf') format('opentype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+/* Bold weight */
+@font-face {
+    font-family: 'Styrene';
+    src: url('./assets/fonts/Styrene-Font/StyreneA-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Styrene';
+    src: url('./assets/fonts/Styrene-Font/StyreneA-BoldItalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* Black weight */
+@font-face {
+    font-family: 'Styrene';
+    src: url('./assets/fonts/Styrene-Font/StyreneA-Black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Styrene';
+    src: url('./assets/fonts/Styrene-Font/StyreneA-BlackItalic.otf') format('opentype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+:root {
+    --color-bg: #f9f9f9;
+    --color-btn-light: #5dbea3;
+    --color-btn-dark: #4a9f8d;
+
+    --color-text: #333;
+    --color-text-light: #fff;
+
+    --font-titles: 'Styrene', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+/* Global styles */
+body {
+    background-color: var(--color-bg);
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: var(--color-text);
+}
+
+/* Title styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-titles);
+    color: var(--color-text);
+}

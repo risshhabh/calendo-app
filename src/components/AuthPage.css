@@ -1,0 +1,147 @@
+/* card */
+.login-card {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.login-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings */
+.login-card h1 {
+    color: #333;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.login-card h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #0a0028;
+    text-align: center;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    font-family: var(--font-titles);
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+    color: #343434;
+    font-size: 1rem;
+    
+}
+
+.form-group input {
+    padding: 0.7rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    font-weight: lighter;
+    font-family: var(--font-body);
+}
+
+.form-group input::placeholder {
+    color: #aaa;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #6b64ef;
+    box-shadow: 0 0 0 2px rgba(107, 100, 239, 0.1);
+}
+
+/* Buttons */
+.submit-btn {
+    background-color: #6b64ef;
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+    background-color: #5951e5;
+    box-shadow: 0 4px 16px rgba(107, 100, 239, 0.2);
+}
+
+.submit-btn:disabled {
+    background-color: #b4b0f5;
+    cursor: not-allowed;
+}
+
+/* Toggle section */
+.auth-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.auth-toggle p {
+    color: #666;
+    margin: 0;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: #6b64ef;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: underline;
+    padding: 0;
+    font-size: 1rem;
+    
+}
+
+.toggle-btn:hover {
+    color: #5951e5;
+}
+
+/* Error message */
+.error-message {
+    background-color: #fff5f5;
+    color: #e53e3e;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid #e53e3e;
+    
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+    .login-card {
+        margin: 20px;
+        padding: 1.5rem;
+    }
+}
