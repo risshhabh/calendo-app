@@ -1,5 +1,3 @@
-/* filepath: /Users/rishabh/code/calendo-app/src/components/TaskPage.css */
-
 /* Task Page Container */
 .task-page {
     max-width: 900px;
@@ -348,4 +346,155 @@
 
 .remove-task.active:hover {
     background-color: #e05050;
+}
+
+/* Filter Bar Styling */
+.filter-bar {
+    display: flex;
+    padding: 10px 20px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+
+.filter-button {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-right: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.filter-button:hover {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+}
+
+.filter-button.active {
+    background-color: var(--color-btn-light);
+    color: white;
+    border-color: var(--color-btn-light);
+}
+
+#checked-filter {
+    width: 38px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#time-filter {
+    width: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+#task-search {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+#task-search:focus {
+    outline: none;
+    border-color: var(--color-btn-light);
+    box-shadow: 0 0 0 2px rgba(93, 190, 163, 0.2);
+}
+
+/* Filter Dropdown Styling */
+.filter-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.type-dropdown {
+    position: fixed;
+    z-index: 2000;
+    min-width: 250px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    font-size: 14px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Add an overlay when dropdown is open */
+.dropdown-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+}
+
+/* Make sure dropdown isn't cut off by the container */
+.filter-dropdown-container {
+    position: static;
+}
+
+.type-dropdown-title {
+    padding: 10px 12px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #eee;
+    font-weight: 500;
+    color: #444;
+}
+
+.type-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.type-option:hover {
+    background-color: #f5f5f5;
+}
+
+.type-option label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.type-option input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.type-dropdown-footer {
+    padding: 10px 12px;
+    background-color: #f7f7f7;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+}
+
+.toggle-all-button {
+    background-color: var(--color-btn-light);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.toggle-all-button:hover {
+    background-color: var(--color-btn-dark);
 }
