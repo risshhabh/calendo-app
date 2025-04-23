@@ -410,57 +410,35 @@
     box-shadow: 0 0 0 2px rgba(93, 190, 163, 0.2);
 }
 
-/* Filter Dropdown Styling */
-.filter-dropdown-container {
-    position: relative;
-    display: inline-block;
-}
-
-.type-dropdown {
-    position: fixed;
-    z-index: 2000;
-    min-width: 250px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
-    font-size: 14px;
-    max-height: 80vh;
-    overflow-y: auto;
-}
-
-/* Add an overlay when dropdown is open */
+/* Type Filter Dropdown */
 .dropdown-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1999;
+    z-index: 100;
 }
 
-/* Make sure dropdown isn't cut off by the container */
-.filter-dropdown-container {
-    position: static;
+.type-dropdown {
+    position: fixed;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 300px;
+    z-index: 101;
 }
 
 .type-dropdown-title {
-    padding: 10px 12px;
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #eee;
     font-weight: 500;
-    color: #444;
+    margin-bottom: 15px;
+    color: var(--color-text-dark);
 }
 
 .type-option {
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.type-option:hover {
-    background-color: #f5f5f5;
+    padding: 8px 0;
 }
 
 .type-option label {
@@ -473,26 +451,24 @@
 .type-option input[type="checkbox"] {
     width: 16px;
     height: 16px;
-    cursor: pointer;
 }
 
 .type-dropdown-footer {
-    padding: 10px 12px;
-    background-color: #f7f7f7;
+    margin-top: 20px;
+    padding-top: 15px;
     border-top: 1px solid #eee;
-    display: flex;
-    justify-content: center;
 }
 
 .toggle-all-button {
+    width: 100%;
+    padding: 8px;
     background-color: var(--color-btn-light);
     color: white;
     border: none;
-    padding: 6px 12px;
     border-radius: 4px;
-    font-size: 13px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    font-family: var(--font-sans);
+    font-weight: 500;
 }
 
 .toggle-all-button:hover {
