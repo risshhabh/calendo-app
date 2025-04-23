@@ -80,7 +80,7 @@ function TaskButtons({ addTask, inRemoveMode, toggleRemoveMode }) {
 function AddTaskPopUp({ addTask, onClose }) {
     const [formData, setFormData] = useState({
         task: '',
-        time: '',
+        time: '30',
         type: 'Other'
     });
     
@@ -119,6 +119,7 @@ function AddTaskPopUp({ addTask, onClose }) {
                             name="task" 
                             value={formData.task}
                             onChange={handleChange}
+                            autocomplete="off"
                             required 
                         />
                     </label>
@@ -129,6 +130,7 @@ function AddTaskPopUp({ addTask, onClose }) {
                             name="time" 
                             value={formData.time}
                             onChange={handleChange}
+                            autocomplete="off"
                             required 
                             min="1"
                         />

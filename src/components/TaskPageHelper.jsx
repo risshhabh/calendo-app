@@ -39,40 +39,23 @@ class Task {
     fuzzyMatch(query) {
         const text = this.taskValue.toLowerCase();
         const pattern = query.toLowerCase().trim();
-        
-        if (pattern.length === 0) return true; // empty search = display all
-        if (text.includes(pattern)) return true; // exact match
-        
-        const THRESHOLD = 3; // max allowed operations
-        const m = text.length;
-        const n = pattern.length;
-        
-        // init matrix
-        const dp = Array(n + 1).fill(null).map(() => Array(m + 1).fill(0));
-        for (let i = 0; i <= n; i++) dp[i][0] = i;
-        for (let j = 0; j <= m; j++) dp[0][j] = 0;
-        
-        // fill matrix
-        for (let i = 1; i <= n; i++) {
-            let matches = false; // track if row has any match within threshold
-            for (let j = 1; j <= m; j++) {
-                if (pattern[i-1] === text[j-1]) {
-                    dp[i][j] = dp[i-1][j-1];
-                } else {
-                    dp[i][j] = 1 + Math.min(
-                        dp[i-1][j],     // deletion
-                        dp[i][j-1],     // insertion
-                        dp[i-1][j-1]    // substitution
-                    );
-                }
-                if (dp[i][j] <= THRESHOLD) matches = true;
-            }
-            // early termination if no matches within threshold
-            if (!matches) return false;
+        if (pattern.length === 0) return true;
+        if (text.includes(pattern)) return true;
+        if (pattern.length < 3) {
+            return text.split(' ').some(word => word.startsWith(pattern));
         }
-        
-        // check if any position in the last row is within threshold
-        return dp[n].some(val => val <= THRESHOLD);
+        let textIndex = 0;
+        let patternIndex = 0;
+        let matchedChars = 0;
+        while (textIndex < text.length && patternIndex < pattern.length) {
+            if (text[textIndex] === pattern[patternIndex]) {
+                matchedChars++;
+                patternIndex++;
+            }
+            textIndex++;
+        }
+        const matchThreshold = Math.min(0.7, (pattern.length - 1) / pattern.length);
+        return matchedChars / pattern.length >= matchThreshold;
     }
 
     // time fmt

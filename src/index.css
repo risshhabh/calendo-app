@@ -1,118 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-/* Thin weight */
-@font-face {
-    font-family: 'Styrene';
-    src: url('./assets/fonts/Styrene-Font/StyreneA-Thin.otf') format('opentype');
-    font-weight: 100;
-    font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
-@font-face {
-    font-family: 'Styrene';
-    src: url('./assets/fonts/Styrene-Font/StyreneA-ThinItalic.otf') format('opentype');
-    font-weight: 100;
-    font-style: italic;
-}
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
 
-/* Light weight */
-@font-face {
-    font-family: 'Styrene';
-    src: url('./assets/fonts/Styrene-Font/StyreneA-Light.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Styrene';
-    src: url('./assets/fonts/Styrene-Font/StyreneA-LightItalic.otf') format('opentype');
-    font-weight: 300;
-    font-style: italic;
-}
-
-/* Regular weight */
-@font-face {
-    font-family: 'Styrene';
-    src: url('./assets/fonts/Styrene-Font/StyreneA-Regular.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Styrene';
-    src: url('./assets/fonts/Styrene-Font/StyreneA-RegularItalic.otf') format('opentype');
-    font-weight: 400;
-    font-style: italic;
-}
-
-/* Medium weight */
-@font-face {
-    font-family: 'Styrene';
-    src: url('./assets/fonts/Styrene-Font/StyreneA-Medium.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Styrene';
-    src: url('./assets/fonts/Styrene-Font/StyreneA-MediumItalic.otf') format('opentype');
-    font-weight: 500;
-    font-style: italic;
-}
-
-/* Bold weight */
-@font-face {
-    font-family: 'Styrene';
-    src: url('./assets/fonts/Styrene-Font/StyreneA-Bold.otf') format('opentype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Styrene';
-    src: url('./assets/fonts/Styrene-Font/StyreneA-BoldItalic.otf') format('opentype');
-    font-weight: 700;
-    font-style: italic;
-}
-
-/* Black weight */
-@font-face {
-    font-family: 'Styrene';
-    src: url('./assets/fonts/Styrene-Font/StyreneA-Black.otf') format('opentype');
-    font-weight: 900;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Styrene';
-    src: url('./assets/fonts/Styrene-Font/StyreneA-BlackItalic.otf') format('opentype');
-    font-weight: 900;
-    font-style: italic;
-}
 
 :root {
-    --color-bg: #f9f9f9;
-    --color-btn-light: #5dbea3;
-    --color-btn-dark: #4a9f8d;
+    --color-bg: #1C1C1E;
+    --color-primary: #3B82F6;
+    --color-primary-hover: #60A5FA;
+    --color-surface: rgba(255, 255, 255, 0.05);
+    --color-text: #FFFFFF;
+    --color-text-secondary: rgba(255, 255, 255, 0.8);
+    --color-text-tertiary: rgba(255, 255, 255, 0.6);
+    --color-border: rgba(255, 255, 255, 0.1);
 
-    --color-text: #333;
-    --color-text-light: #fff;
-
-    --font-titles: 'Styrene', sans-serif;
-    --font-body: 'Source Sans 3', sans-serif;
+    --font-titles: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'IBM Plex Mono', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* Global styles */
 body {
-    background-color: var(--color-bg);
+    background: linear-gradient(135deg, #1C1C1E 0%, #2C2C2E 100%);
     margin: 0;
     padding: 0;
+    min-height: 100vh;
     font-family: var(--font-body);
     color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Title styles */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-titles);
     color: var(--color-text);
+    letter-spacing: -0.02em;
+}
+
+/* Custom selection color */
+::selection {
+    background: rgba(255, 107, 107, 0.2);
+    color: var(--color-text);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
 }

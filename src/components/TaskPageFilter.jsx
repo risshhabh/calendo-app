@@ -56,6 +56,7 @@
 
 import React, { useState, useEffect } from 'react';
 import * as helper from './TaskPageHelper';
+import './TaskPageFilter.css';
 
 function TaskPageFilter({ tasks, onFilter }) {
     // search bar state
@@ -92,18 +93,17 @@ function TaskPageFilter({ tasks, onFilter }) {
 
     // Calculate dropdown position when opened
     const toggleTypeDropdown = () => {
-        if (!showTypeDropdown) {
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
+        if (!showTypeDropdown && typeFilterButtonRef.current) {
+            const buttonRect = typeFilterButtonRef.current.getBoundingClientRect();
+            const dropdownWidth = 240; // Width from our CSS
             
-            // Assuming dropdown width of 300px and height of 400px
-            // These values can be adjusted based on your actual dropdown size
-            const dropdownWidth = 300;
-            const dropdownHeight = 400;
-            
+            // Position the dropdown below the button
             setDropdownPosition({
-                left: (viewportWidth - dropdownWidth) / 2,
-                top: (viewportHeight - dropdownHeight) / 2
+                top: buttonRect.bottom + 8,
+                left: Math.min(
+                    buttonRect.left,
+                    window.innerWidth - dropdownWidth - 16
+                )
             });
         }
         setShowTypeDropdown(!showTypeDropdown);
@@ -122,11 +122,11 @@ function TaskPageFilter({ tasks, onFilter }) {
     const getCheckFilterSymbol = () => {
         switch (checkFilter) {
             case 'completed':
-                return '⌃';
+                return '↑';
             case 'incomplete':
-                return '⌄';
+                return '↓';
             default:
-                return '—';
+                return '-';
         }
     };
 
@@ -143,11 +143,11 @@ function TaskPageFilter({ tasks, onFilter }) {
     const getTimeFilterSymbol = () => {
         switch (timeFilter) {
             case 'ascending':
-                return '️⌃';
+                return '↑';
             case 'descending':
-                return '️⌄';
+                return '↓';
             default:
-                return '—';
+                return '-';
         }
     };
 
@@ -225,71 +225,76 @@ function TaskPageFilter({ tasks, onFilter }) {
     // if any of the above dependencies change, re-run the filter and sort
 
     return (
-        <div className='filter-bar'>
-            {/* isComplete filter */}
-            <button 
-                id="checked-filter" 
-                className={`filter-button ${checkFilter !== 'none' ? 'active' : ''}`}
-                onClick={toggleCheckFilter}
-            >
-                {getCheckFilterSymbol()}
-            </button>
-            
-            {/* search bar */}
-            <input 
-                type="text" 
-                placeholder="Search tasks" 
-                id="task-search" 
+        <div className="filter-container">
+            <input
+                type="text"
+                className="search-input"
+                placeholder="Search tasks..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
-
-            {/* filter by time taken */}
+            
             <button 
-                id="time-filter" 
+                className={`filter-button ${checkFilter !== 'none' ? 'active' : ''}`}
+                onClick={toggleCheckFilter}
+                title="Filter by completion status"
+            >
+                Status {getCheckFilterSymbol()}
+            </button>
+            
+            <button 
                 className={`filter-button ${timeFilter !== 'none' ? 'active' : ''}`}
                 onClick={toggleTimeFilter}
+                title="Sort by time"
             >
-                {getTimeFilterSymbol()}
+                Time {getTimeFilterSymbol()}
             </button>
-
-
-            <div id="type-filter-container" className="filter-dropdown-container">
+            
+            <div className="filter-dropdown-wrapper">
                 <button 
-                    id="type-filter" 
                     ref={typeFilterButtonRef}
-                    className={`filter-button ${selectedTypes.size < helper.TaskType.getTypes().length ? 'active' : ''}`}
+                    className={`filter-button ${selectedTypes.size !== helper.TaskType.getTypes().length ? 'active' : ''}`}
                     onClick={toggleTypeDropdown}
+                    title="Filter by type"
                 >
-                    🔍
+                    Type {selectedTypes.size === helper.TaskType.getTypes().length ? '-' : '↓'}
                 </button>
+
                 {showTypeDropdown && (
-                    <>
-                        <div className="dropdown-overlay" onClick={() => setShowTypeDropdown(false)}></div>
-                        <div className="type-dropdown" style={{ top: dropdownPosition.top, left: dropdownPosition.left }}>
-                            <div className="type-dropdown-title">Filter by Type</div>
-                            {helper.TaskType.getTypes().map((type, index) => (
-                                <div key={index} className="type-option">
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            checked={selectedTypes.has(type)}
-                                            onChange={() => toggleTypeSelection(type)}
-                                        />
-                                        {type}
-                                    </label>
-                                </div>
-                            ))}
-                            <div className="type-dropdown-footer">
-                                <button onClick={toggleAllTypes} className="toggle-all-button">
-                                    {getAllButtonText()}
-                                </button>
+                    <div 
+                        className="type-dropdown"
+                        id="type-filter-container"
+                    >
+                    <div className="type-dropdown-header">
+                        <span className="type-dropdown-title">Filter by Type</span>
+                        <button className="select-all-button" onClick={toggleAllTypes}>
+                            {getAllButtonText()}
+                        </button>
+                    </div>
+                    <div className="type-options">
+                        {helper.TaskType.getTypes().map(type => (
+                            <div
+                                key={type}
+                                className={`type-option ${selectedTypes.has(type) ? 'selected' : ''}`}
+                                onClick={() => toggleTypeSelection(type)}
+                            >
+                                <span>{selectedTypes.has(type) ? '✓' : ''}</span>
+                                {type}
                             </div>
-                        </div>
-                    </>
-                )}
-            </div>
-            <button id="clear-filter" className='filter-button' onClick={clearAllFilters}>❌</button>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            <button 
+                className="clear-filters"
+                onClick={clearAllFilters}
+                title="Clear all filters"
+                disabled={!searchTerm && checkFilter === 'none' && timeFilter === 'none' && selectedTypes.size === helper.TaskType.getTypes().length}
+            >
+                Clear
+            </button>
+        </div>
         </div>
     );
 }
